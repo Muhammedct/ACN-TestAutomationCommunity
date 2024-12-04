@@ -1,0 +1,2 @@
+tests/test_login.robot
+tests/test_contact.robot

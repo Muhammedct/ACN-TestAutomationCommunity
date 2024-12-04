@@ -1,0 +1,64 @@
+# robot_resources.yaml
+
+# Settings
+settings:
+ - name: Library
+   value: SeleniumLibrary
+
+# Keywords
+keywords:
+ - name: Click Add Contact Button
+   actions:
+     - type: Click Button
+       args:
+         - id=add-contact
+
+ - name: Enter First Name
+   arguments:
+     - ${first_name}
+   actions:
+     - type: Input Text
+       args:
+         - id=firstName
+         - ${first_name}
+
+ - name: Enter Last Name
+   arguments:
+     - ${last_name}
+   actions:
+     - type: Input Text
+       args:
+         - id=lastName
+         - ${last_name}
+
+ - name: Enter Phone Number
+   arguments:
+     - ${phone}
+   actions:
+     - type: Input Text
+       args:
+         - id=phone
+         - ${phone}
+
+ - name: Click Save Button
+   actions:
+     - type: Click Button
+       args:
+         - id=submit
+
+ - name: Verify Contact Is Added
+   arguments:
+     - ${first_name}
+     - ${last_name}
+     - ${phone}
+   actions:
+     - type: Set Variable
+       args:
+         - ${first_name} ${last_name}
+       result: ${full_name}
+     - type: Wait Until Element Is Visible
+       args:
+         - xpath=//tr[contains(@class, 'contactTableBodyRow') and td[contains(text(),'${full_name}')] and td[contains(text(),'${phone}')]]
+     - type: Page Should Contain Element
+       args:
+         - xpath=//tr[contains(@class, 'contactTableBodyRow') and td[contains(text(),'${full_name}')] and td[contains(text(),'${phone}')]]

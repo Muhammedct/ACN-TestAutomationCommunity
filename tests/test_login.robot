@@ -6,7 +6,7 @@ Resource   ../resources/robot_resources.yaml
 ${URL}    https://thinking-tester-contact-list.herokuapp.com/
 ${BROWSER}    chrome
 ${USERNAME}    acn@acn1.com
-${PASSWORD}    123456Acn*.
+${PASSWORD}    123456Acn*
 
 *** Test Cases ***
 Verify User Can Log In With Valid Credentials
